@@ -1,0 +1,26 @@
+<div style="margin-top:70px;" id="d1"class="col-md-4 col-md-offset-4">
+
+
+<h2>SIGN IN</h2>
+<form  [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+  <label for="email">Email Id</label>
+    <input name="email"  type="Email" class="form-control" formControlName="email" />
+    </div>
+    <div *ngIf="userForm.controls['email'].hasError('required')" class="alert alert-danger">
+      Please enter email
+    </div>
+     <div class="form-group">
+         <label for="password"> Password</label>
+    <input name="password"type="password" class="form-control" formControlName="password"   />
+    </div>
+    <!-- <div *ngIf="userForm.controls['password'].hasError('required')" class="alert alert-danger">
+      Please enter password
+    </div> -->
+    <div class="form-group">
+    <button [disabled]="!userForm.valid" class="btn btn-primary" >submit</button>
+    </div>
+    <a [routerLink]="['/signup']" class="btn btn-link">SIGN UP</a>
+  </form>
+</div>
+<!-- #userForm="ngForm" -->

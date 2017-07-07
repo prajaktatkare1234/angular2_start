@@ -1,0 +1,47 @@
+<div style="margin-top:70px;"  id="d1"class="col-md-4 col-md-offset-4">
+
+
+<h2>SIGN UP</h2>
+<form  [formGroup]="regForm" (ngSubmit)="onSubmit()">
+
+
+    <div class="form-group">
+      <label for="uname">Username</label>
+      <input  type="text" name="uname" value="" class="form-control" formControlName="uname" >
+      <div *ngIf="regForm.controls['uname'].hasError('required')" >
+        Name is required
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="phoneNo">Phone no</label>
+      <input type="" name="phoneNo" value="" class="form-control" formControlName="phoneNo">
+      <div *ngIf="regForm.controls['phoneNo'].hasError('required')" >
+        phoneNo is required
+      </div>
+    </div>
+
+    <div class="form-group">
+              <label for="uemail">Email Id</label>
+      <input  type="email" name="uemail" value="" class="form-control" formControlName="uemail">
+      <div *ngIf="regForm.controls['uemail'].hasError('required')" >
+        Email is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="upassword">Password</label>
+      <input type="password" name="upassword" value="" class="form-control" formControlName="upassword">
+      <!-- <div *ngIf="regForm.controls['upassword'].hasError('required')" >
+        Password is required
+      </div> -->
+    </div>
+    <div class="form-group">
+    <button  class="btn btn-primary" [disabled]="!regForm.valid">submit</button>
+    </div>
+    <a [routerLink]="['/signin']" class="btn btn-link">SIGN IN</a>
+
+  </form>
+</div>
+<!-- #userForm="ngForm" -->
