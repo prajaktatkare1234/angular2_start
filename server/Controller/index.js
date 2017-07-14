@@ -5,7 +5,8 @@ router.use('/signUp', require('./signUp'));
 router.use('/signIn', require('./signIn'));
 
 // router.use('/userInfo', require('./authenticate'), require('./userInfo'));
-// router.use('/logout', require('./logout'));
+router.use('/logout', require('./logout'));
+router.use('/mobileDetail', require('./mobileDetail'));
 //
 // router.use('/dataCard',require('./authenticate'),require('./dataCard'));
 // router.use('/getDatacard',require('./authenticate'),require('./getDatacard'));

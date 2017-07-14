@@ -1,0 +1,11 @@
+
+<div   class="col-sm-3 col-xs-3">
+<div id="sidebarDiv" class="">
+  <div style="font-size:20px; margin-top:38px;" *ngFor="let op of options">
+  {{op.head}}
+  <div class="brand" *ngFor="let name of op.content">
+    <input type="checkbox" (change)="selected(op.head,name)" value="name"/> {{name}}
+  </div>
+</div>
+</div>
+</div>

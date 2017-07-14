@@ -56,7 +56,7 @@ router.post('/', function(req, res) { // post call for api signIn.js
     */
    User.login(req.body, function(err, result) {
 
-
+console.log("signin");
 
 
        if (err) {

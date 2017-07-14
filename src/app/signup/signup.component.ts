@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http,Request,Response,RequestMethod} from '@angular/http';
 import { FormGroup,FormControl,Validators,FormBuilder} from '@angular/forms';
 import {RouterModule, Routes,Router} from '@angular/router';
-import { SignupService } from '../signup.service';
+import { AppService } from '../app.service';
 
 
 
@@ -10,7 +10,7 @@ import { SignupService } from '../signup.service';
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
-   providers: [SignupService]
+   providers: [AppService]
 
 })
 // export class SignupComponent implements OnInit{
@@ -29,7 +29,8 @@ import { SignupService } from '../signup.service';
 export class SignupComponent implements OnInit {
 regForm: FormGroup;
  posts: any = [];
-   constructor(private _formBuilder:FormBuilder,public http: Http, private router: Router,private postsService: SignupService) { }
+
+   constructor(private _formBuilder:FormBuilder,public http: Http, private router: Router,private postsService: AppService) { }
    ngOnInit(){
 
      this.regForm=this._formBuilder.group({
@@ -64,10 +65,18 @@ console.log(this.regForm.value);
 //
 //
 // }
- this.postsService.getAllPosts(this.regForm.value).subscribe(posts => {
+ this.postsService.register(this.regForm.value).subscribe(posts => {
 
-       this.posts = posts;
-          console.log("done");
+   this.posts=posts.json();
+   console.log(this.posts.status);
+   if(this.posts.status)  {
+     this.router.navigate(['/signin']);
+
+   }
+   else{
+       this.router.navigate(['/sigup']);
+   }
+
      });
 }
 

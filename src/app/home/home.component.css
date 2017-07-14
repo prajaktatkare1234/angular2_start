@@ -1,0 +1,24 @@
+
+#Samsung Galaxy S5{
+  margin-left:-55px;
+}
+/*.img:hover{
+  opacity: 0.8;
+  background-color: yellow;
+}*/
+.outerdiv:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+.outerdiv{
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+
+}
+.details{
+  background-color: #222222;
+  height:30px;
+  color:white;
+  /*border-radius: 5px;*/
+    text-align:center;
+    padding-top: 4px;
+}

@@ -1,0 +1,84 @@
+
+  <app-navigationbar></app-navigationbar>
+
+
+<div id='content' class="row">
+
+
+<div style="padding-left:50px;padding-top:20px;" class="col-sm-6 col-md-6 col-lg-6">
+  <img id="img" style="width:90%;height:400px;"src="{{data.image.large}}" alt=""/>
+<h4 style="text-align:center;" class="">
+  {{data.name}}
+</h4>
+<div id="rating">
+  Ratings:<span style="color:#B12704;padding-left:2px;">{{data.rating}}</span>
+</div>
+<div id= "rating">
+  Price:<span style="color:#B12704;padding-left:2px;">&#8377;{{data.price}}</span>
+</div>
+<hr>
+
+
+</div>
+<div style="padding:20px;"class="col-sm-6 col-md-6 col-lg-6">
+  <div class="col-sm-1 col-md-1 col-lg-1">
+
+  </div>
+  <div class="col-sm-10 col-md-10 col-lg-10">
+    <!-- <div id="details"> -->
+      <h3 ><I>Description</I></h3>
+
+      <!-- <span style="float:right;padding-right:4px;">Price: ${{data.price}}</span> -->
+
+    <!-- </div> -->
+
+
+
+    <span id="des">{{data.description}}</span>
+        <hr>
+
+      <h3 ><I>Specifications</I></h3>
+
+      <div style="font-size:18px; "class="">
+        <div style="padding:10px;"class="col-xs-6 col-md-6 col-lg-6">
+          <div class="specs">Manufacturer </div>
+          <div class="specs">OS </div>
+            <div class="specs">Camera</div>
+              <div class="specs">Storage </div>
+
+
+        </div>
+        <div style="padding:10px;" class="col-xs-6 col-md-6 col-lg-6">
+          <div class="specs">{{data.specs.manufacturer}} </div>
+          <div class="specs">{{data.specs.os}}  </div>
+          <div class="specs">{{data.specs.camera}}  </div>
+          <div class="specs">{{data.specs.storage}}  </div>
+
+        </div>
+      </div>
+
+      <div style="margin-top:40px;" class="row">
+            <hr>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <button type="button" name="button">Add to Cart</button>
+          <!-- <button type="button" name="button">Buy</button> -->
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <!-- <button type="button" name="button">Add to Cart</button> -->
+          <button type="button" name="button">Buy</button>
+        </div>
+
+      </div>
+
+
+
+
+  </div>
+
+</div>
+
+
+
+
+</div>
+<footer style="text-align:center;font-size:15px;"><div> *Please note that orders which exceed the quantity limit will be auto-canceled. This is applicable across sellers.</div></footer>

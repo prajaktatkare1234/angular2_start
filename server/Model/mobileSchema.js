@@ -22,46 +22,42 @@ var Schema = mongoose.Schema;
  * @schema userSchema
  * @description user details
  */
-var userSchema = Schema({
+var mobileSchema = Schema({
     // local:{
       name: {
           type: String,
           // required: true,
           // validate: validators.isAlpha(),
-          minlength: 2,
-          maxlength: 10
+
       },
-      email: {
+      description: {
           type: String,
-          unique: true,
+          // unique: true,
           // required: true,
           // validate: validators.isEmail()
       },
-      password: {
-          type: String,
-          // required: true,
-          // validate: validators.isAlphanumeric(),
-          minlength: 5,
-          // maxlength: 8
+      image: {
+          small: String,
+
+          // minlength: 5,
+
+      },
+      storage:{
+        type:String
+      },
+      ratings: {
+        type :String
+      },
+      cost:{
+        type:String
+      },
+      os:{
+        type:String
+      },
+      Camera:{
+        type:String
       }
-    //   ,
-    //   profile_pic:{
-    //     type:String
-    //   },
-    //   original_pic:{
-    //     type:String
-    //   }
-    //
-    // },
-    // social:{
-    //   displayName: String,
-    //   picture: String,
-    //   facebook: String,
-    //   fbemail:String ,
-    //   google: String,
-    //   gmail:String
-    // }
-    //
+
 
 
 
@@ -74,39 +70,42 @@ var userSchema = Schema({
 * @return {User} user
 * @api For public
 */
-userSchema.statics.saveUser = function(req, cb) {
+mobileSchema.statics.mobileData = function(req, cb) {
   console.log("in saveUser",req);
-  var pwd = req.upassword;
+  // var pwd = req.upassword;
 
   var encrypt = encrypt_data(pwd);
-  var user_Detail = new this({
-    name: req.uname,
-    email: req.uemail,
-    password: encrypt
+  var mobile_Detail = new this({
+    name: req.name,
+    description: req.description,
+    // 'image.small':req.small,
+    storage:req.storage,
+    ratings:req.ratings,
+    cost:req.cost,
+    os:req.os,
+    camera:req.camera
+
   });
-  user_Detail.save(cb);
+  mobile_Detail.save(cb);
 };
 
 
 
 
+//
+// function encrypt_data(pwd) { //function to encrypt password
+//     var cipher = crypto.createCipher(config.algorithm, config.password)
+//     var crypted = cipher.update(pwd, 'utf8', 'hex')
+//     crypted += cipher.final('hex');
+//     return crypted;
+// }
 
-function encrypt_data(pwd) { //function to encrypt password
-    var cipher = crypto.createCipher(config.algorithm, config.password)
-    var crypted = cipher.update(pwd, 'utf8', 'hex')
-    crypted += cipher.final('hex');
-    return crypted;
-}
 
 
-
-userSchema.statics.login = function(req, cb) {
-var encPass =encrypt_data(req.password)
-    this.findOne({
-        email: req.email,
-        password:encPass
-    }, cb);
-};
+// userSchema.statics.login = function(req, cb) {
+// var encPass =encrypt_data(req.password)
+//     this.findOne({
+//         email: req.email,dataCard
 //
 // /**
 //  * Setting profile pic for user
@@ -188,15 +187,12 @@ var encPass =encrypt_data(req.password)
 //
 // /**
 //  * Find User by its email
-//  *
+//  *user_Detail
 //  * @param {String} email
 //  * @return {Error} err
 //  * @return {User} user
 //  * @api user
 //  */
-// userSchema.statics.verifyEmail=function(req,cb){
-//
-//   this.findOne({'local.email':req.email},cb);
 //
 // };
 //
@@ -211,7 +207,16 @@ var encPass =encrypt_data(req.password)
 //  userSchema.statics.changePassword=function(req,email,cb){
 //    var encrypt = encrypt_data(req.password);
 //    this.update({
-//      'local.email': email
+//      'local.email': email//  */
+//
+// };
+//
+// /**
+//  * Find User by its email and change password
+//  *
+//  * @param {String} email
+//  * @return {Error} err
+
 //    }, {
 //      $set: {
 //        'local.password':encrypt
@@ -228,8 +233,6 @@ var encPass =encrypt_data(req.password)
 //  */
 // userSchema.statics.verifyEmail=function(req,cb){
 //
-//   this.findOne({'local.email':req.email},cb);
-//
 // };
 //
 // /**
@@ -242,7 +245,7 @@ var encPass =encrypt_data(req.password)
 //  */
 //  userSchema.statics.changePassword=function(req,email,cb){
 //    var encrypt = encrypt_data(req.password);
-//    this.update({
+//    this.update({userSchema
 //      'local.email': email
 //    }, {
 //      $set: {
@@ -257,6 +260,6 @@ var encPass =encrypt_data(req.password)
 //   * @description Expose `User` Model
 //   */
 
-var User = mongoose.model('user', userSchema);
+var User = mongoose.model('mobileData', mobileSchema);
 
 module.exports = User;
