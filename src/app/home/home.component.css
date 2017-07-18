@@ -12,6 +12,7 @@
 
 .outerdiv{
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+  /*height:320px;*/
 
 }
 .details{
@@ -21,4 +22,7 @@
   /*border-radius: 5px;*/
     text-align:center;
     padding-top: 4px;
+}
+#div{
+  width: 325px;
 }

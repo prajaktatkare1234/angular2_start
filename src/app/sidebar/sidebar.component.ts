@@ -10,12 +10,16 @@ import { AppService } from '../app.service';
 })
 export class SidebarComponent implements OnInit {
 options:Array<any>;
+IsChecked;
+count=0;
+startHead=null;
+secondHead=null;
+thirdHead=null;
+fourthHead=null;
+vcount=0;
 
 
-manufacturer=new Array();
-Storage=new Array();
-camera=new Array();
-OS=new Array();
+
 
   constructor(private appservice:AppService) {
     this.options=appservice.getOptions();
@@ -28,12 +32,45 @@ OS=new Array();
   selected(data1,data2)
   {
 
+    this.count++;
+    if(this.count==1){
+     this.startHead=data1;
+     this.vcount=1;
+    }
+    if(this.vcount==1){
+      console.log("secondHead")
+      this.secondHead=data1;
+      this.vcount=2;
+    }
+
+    if(this.vcount==2){
+      console.log("thirdHead")
+      this.thirdHead=data1;
+      this.vcount=3;
+    }
+    if(this.vcount==3 && this.thirdHead!==null){
+      console.log("fourthHead")
+      this.fourthHead=data1;
+    }
 
 
+    if ((<HTMLInputElement>document.getElementById(data2)).checked === true) {
+          console.log("checked");
+          this.IsChecked=true;
+        }
+    if ((<HTMLInputElement>document.getElementById(data2)).checked === false) {
+              console.log("unchecked");
+              this.IsChecked=false;
+        }
 
       let specifications = {
         head :data1,
         content:data2,
+        checked:this.IsChecked,
+        startHead:this.startHead,
+        secondHead:this.secondHead,
+        thirdHead:this.thirdHead,
+        fourthHead:this.fourthHead
         // camera:this.camera,
         //  OS:this.OS
         //
@@ -42,7 +79,7 @@ OS=new Array();
     this.clicked.emit(specifications);
   }
 
-// console.log("dsfkdslkf");
+
 }
 
 

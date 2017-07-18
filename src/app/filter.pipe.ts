@@ -9,7 +9,7 @@ export class FilterPipe implements PipeTransform {
   // camera=new Array();
   // OS=new Array();
   newdata:any[];
-  localStorag
+
 
 
 
