@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.data = JSON.parse(localStorage.getItem('mobile'));
     console.log(this.data);
-    this.newdata = this.data;
+    // this.newdata = this.data;
   }
 
 
@@ -38,51 +38,55 @@ export class HomeComponent implements OnInit {
   onClicked(value: any) {
     this.filterValue = value;
 
-    let newArray = new Array();
+
     if (value.checked) {
       this.content[value.head].push(value.content);
     }
     else {
       let remove = this.content[value.head].indexOf(value.content);
       this.content[value.head].splice(remove, 1);
-
     }
 
+console.log(this.content);
 
-
-    if (value.head == value.startHead) {
-      this.newdata = this.data;
+    // if (value.head == value.startHead) {
+        let newArray = new Array();
+        this.newdata = this.data;
       // }
+var self = this;
+this.dont = this.newdata.filter(function(mobileObj){
+  let manufacturerFlag=true,storageFlag=true,cameraFlag=true,osFlag=true;
+  if(self.content.manufacturer.length>0)
+    manufacturerFlag = (self.content.manufacturer.indexOf(mobileObj.specs.manufacturer)>-1)
+  if(self.content.storage.length>0)
+    storageFlag = (self.content.storage.indexOf(mobileObj.specs.storage)>-1)
+  if(self.content.camera.length>0)
+    cameraFlag = (self.content.camera.indexOf(mobileObj.specs.camera)>-1)
+  if(self.content.os.length>0)
+    osFlag = (self.content.os.indexOf(mobileObj.specs.os)>-1)
+return (manufacturerFlag&&storageFlag&&cameraFlag&&osFlag);
+});
 
-
-      for (let datas in this.newdata) { // for objects in data array
-        let m = this.content[value.head]; //array of head eg: manufacturer
-        for (let n in this.content[value.head]) // loop for array of head eg:manufacturer
-        {
-          let d = this.newdata[datas].specs[value.head];//content value of head in data array
-          let cont = m[n];//value of content in head array
-          if (cont == d) {
-            let a = this.newdata[datas];
-            newArray.push(a)
-            console.log(newArray)
-            var unique = newArray.filter(function(elem, index, self) {
-              return index == self.indexOf(elem);
-            })
-            this.dont = unique;
-          }
-        }
-      }
-
-      // this.newdata = [];
       console.log(this.dont);
       this.newdata = this.dont;
       console.log(this.newdata);
-    }
 
+
+    }
+    buy(value: any) {
+      console.log(value);
+      let buy = JSON.stringify(value);
+      localStorage.setItem('buy', buy);
+    }
+  }
+    // }
+/*
     // this.filtermanu();
 
     if (value.head == value.secondHead) {
-      console.log("sfjdskfjdskf");
+        console.log(this.newdata);
+        let newArray = new Array();
+      console.log("sfjdskfjdskf",this.newdata);
 
       for (let datas in this.newdata) { // for objects in data array
         let m = this.content[value.head]; //array of head eg: manufacturer
@@ -107,6 +111,7 @@ export class HomeComponent implements OnInit {
     }
 
     if (value.head == value.thirdHead) {
+        let newArray = new Array();
       console.log("third head");
 
       for (let datas in this.secondHeadArray) { // for objects in data array
@@ -128,10 +133,14 @@ export class HomeComponent implements OnInit {
         }
       }
       this.thirdHeadArray=this.dont;
+      console.log("in third after push",this.thirdHeadArray);
+
     }
 
     if (value.head == value.fourthHead) {
-      console.log("third head");
+        let newArray = new Array();
+
+      console.log("fourth head",this.thirdHeadArray);
 
       for (let datas in this.thirdHeadArray) { // for objects in data array
         let m = this.content[value.head]; //array of head eg: manufacturer
@@ -141,8 +150,9 @@ export class HomeComponent implements OnInit {
           let cont = m[n];//value of content in head array
           if (cont == d) {
             let a = this.thirdHeadArray[datas];
+            console.log("before push",newArray)
             newArray.push(a)
-            console.log(newArray)
+            console.log("pushing",newArray)
             var unique = newArray.filter(function(elem, index, self) {
               return index == self.indexOf(elem);
             })
@@ -151,11 +161,12 @@ export class HomeComponent implements OnInit {
           }
         }
       }
-      // this.thirdHeadArray=this.dont;
+      this.thirdHeadArray=this.dont;
     }
+*/
 
 
-  }
+
 
 
 
@@ -240,30 +251,22 @@ export class HomeComponent implements OnInit {
 
 
 
+  // for (let datas in this.newdata) { // for objects in data array
+  //   let m = this.content[value.head]; //array of head eg: manufacturer
+  //   for (let n in this.content[value.head]) // loop for array of head eg:manufacturer
+  //   {
+  //     let d = this.newdata[datas].specs[value.head];//content value of head in data array
+  //     let cont = m[n];//value of content in head array
+  //     if (cont == d) {
+  //       let a = this.newdata[datas];
+  //       newArray.push(a)
+  //       console.log(newArray)
+  //       var unique = newArray.filter(function(elem, index, self) {
+  //         return index == self.indexOf(elem);
+  //       })
+  //       this.dont = unique;
+  //     }
+  //   }
+  // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  buy(value: any) {
-    console.log(value);
-    let buy = JSON.stringify(value);
-    localStorage.setItem('buy', buy);
-  }
-}
+  // this.newdata = [];

@@ -11,13 +11,13 @@ import { AppService } from '../app.service';
 export class SidebarComponent implements OnInit {
 options:Array<any>;
 IsChecked;
-count=0;
-startHead=null;
-secondHead=null;
-thirdHead=null;
-fourthHead=null;
-vcount=0;
-
+// count=0;
+// startHead=null;
+// secondHead=null;
+// thirdHead=null;
+// fourthHead=null;
+// vcount=0;
+//
 
 
 
@@ -31,28 +31,29 @@ vcount=0;
 
   selected(data1,data2)
   {
+    //
+    // this.count++;
+    // if(this.count==1){
+    //  this.startHead=data1;
+    //  this.vcount=1;
+    // }
 
-    this.count++;
-    if(this.count==1){
-     this.startHead=data1;
-     this.vcount=1;
-    }
-    if(this.vcount==1){
-      console.log("secondHead")
-      this.secondHead=data1;
-      this.vcount=2;
-    }
-
-    if(this.vcount==2){
-      console.log("thirdHead")
-      this.thirdHead=data1;
-      this.vcount=3;
-    }
-    if(this.vcount==3 && this.thirdHead!==null){
-      console.log("fourthHead")
-      this.fourthHead=data1;
-    }
-
+    // if(data1!=this.startHead && data1!=this.secondHead && this.secondHead!==null && this.startHead!==null){
+    // if(this.vcount==2 && data1!==this.secondHead){
+    //   console.log("thirdHead")
+    //   this.thirdHead=data1;
+    //   this.vcount=3;
+    // }
+    // if(this.vcount==3 && data1!==this.thirdHead){
+    //   console.log("fourthHead")
+    //   this.fourthHead=data1;
+    // }
+    // // if(data1!=this.startHead && this.startHead!==null){
+    // if(this.vcount==1 && data1!==this.startHead){
+    //   console.log("secondHead")
+    //   this.secondHead=data1;
+    //   this.vcount=2;
+    // }
 
     if ((<HTMLInputElement>document.getElementById(data2)).checked === true) {
           console.log("checked");
@@ -67,10 +68,10 @@ vcount=0;
         head :data1,
         content:data2,
         checked:this.IsChecked,
-        startHead:this.startHead,
-        secondHead:this.secondHead,
-        thirdHead:this.thirdHead,
-        fourthHead:this.fourthHead
+        // startHead:this.startHead,
+        // secondHead:this.secondHead,
+        // thirdHead:this.thirdHead,
+        // fourthHead:this.fourthHead
         // camera:this.camera,
         //  OS:this.OS
         //

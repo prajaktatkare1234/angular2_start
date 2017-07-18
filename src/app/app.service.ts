@@ -12,7 +12,7 @@ export class AppService {
     this.options = [
       {
         head: 'manufacturer',
-        content: ['Samsung', 'Apple', 'ZTE', 'HTC']
+        content: ['Samsung', 'Apple', 'ZTE', 'HTC','Sony']
       },
       {
         head: 'os',
@@ -20,11 +20,11 @@ export class AppService {
       },
       {
         head: 'storage',
-        content: ['16', '32','64','128']
+        content: [16, 32]
       },
       {
         head: 'camera',
-        content: ['8', '12','16']
+        content: [8, 12,16]
       },
     ];
   }
