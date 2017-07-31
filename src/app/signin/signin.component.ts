@@ -12,8 +12,6 @@ import { AppService } from '../app.service';
 //
 //   constructor() { }
 //
-//   ngOnInit() {
-//   }
 //
 //
 // }
@@ -25,7 +23,14 @@ export class SigninComponent {
 
     password:new FormControl("",Validators.required)
   });
+  ngOnInit() {
+    if(localStorage.getItem('mobile')){
 
+         this.router.navigate(['/home']);
+     }
+
+  }
+  //
   // data={};
 
 

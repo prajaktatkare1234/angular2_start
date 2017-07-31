@@ -1,0 +1,68 @@
+<app-navigationbar></app-navigationbar>
+<!-- </div> -->
+
+<div style="margin-top:75px;"class="row">
+
+
+<div class=" col-xs-3 col-sm-3 col-md-3 col-lg-3">
+   <!-- <app-sidebar  (clicked)="onClicked($event)"></app-sidebar> -->
+ </div>
+
+<div class=" col-sm-6 col-md-6 col-lg-6" >
+<div *ngIf="!sum==0"class="">
+  <span style="padding-left:10px;font-size:18px;"><b>SHOPPING CART</b></span>
+  <span style="float:right;padding-right:30px;font-size:18px;"><b>Total Cost: ${{sum}}</b></span>
+</div>
+<div style="text-align:center;" *ngIf="sum==0"class="">
+<span style="font-size:20px;" >Cart Empty</span>
+</div>
+
+  <div id="div"  class=" col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngFor="let cart of cartproducts | filter : dont ">
+    <div class="outerdiv">
+      <div class="row">
+
+        <div class="col-sm-5 col-md-5 col-xs-5 col-lg-5">
+          <img style="height:150px;height:150px; margin-left:30px;" id={{cart.id}} class="img" src="{{cart.image.small}}" alt=""/>
+        </div>
+
+        <div style="padding-top:8px;"class="col-sm-4 col-md-4 col-xs-4 col-lg-4">
+        <!-- <div style="padding-right:10px;" class="">
+          <a style="float:right;"(click)="remove(cart,cart.name)"name="button"><span class="glyphicon glyphicon-trash"></span></a>
+
+        </div> -->
+<div style="margin-top:30px;"class="">
+  <div class="content">
+      <span id="head">{{cart.name}}</span>
+  </div>
+
+  <div class="content">
+    <span id="head">Price:</span><span id="cont">${{cart.price}}</span>
+  </div>
+
+  <!-- <hr> -->
+  <div class="content">
+      <span id="head">Ratings:</span><span id="cont">{{cart.rating}}</span>
+  </div>
+  <div class="content">
+        <a style="text-decoration:none;" (click)="remove(cart,cart.name)"name="button">Delete</a>
+  </div>
+</div>
+
+
+        </div>
+      </div>
+
+      <!-- <div class="details">
+        <span>{{cart.name}}</span>
+      </div> -->
+    </div>
+
+
+
+
+</div>
+</div>
+<div class=" col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+</div>
+</div>

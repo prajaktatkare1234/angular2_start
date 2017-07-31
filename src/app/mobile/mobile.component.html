@@ -14,7 +14,7 @@
   Ratings:<span style="color:#B12704;padding-left:2px;">{{data.rating}}</span>
 </div>
 <div id= "rating">
-  Price:<span style="color:#B12704;padding-left:2px;">&#8377;{{data.price}}</span>
+  Price:<span style="color:#B12704;padding-left:2px;">${{data.price}}</span>
 </div>
 <hr>
 
@@ -60,7 +60,7 @@
       <div style="margin-top:40px;" class="row">
             <hr>
         <div class="col-sm-6 col-md-6 col-lg-6">
-          <button type="button" name="button">Add to Cart</button>
+          <button type="button" (click)="addtoCart(data)"name="button">Add to Cart</button>
           <!-- <button type="button" name="button">Buy</button> -->
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6">

@@ -24,7 +24,7 @@ export class AppService {
       },
       {
         head: 'camera',
-        content: [8, 12,16]
+        content: [8,12,15]
       },
     ];
   }

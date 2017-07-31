@@ -25,4 +25,24 @@
 }
 #div{
   width: 325px;
+  margin-top:10px;
+  margin-bottom:15px
+}
+
+/*img:hover + div.#divhover {
+    display: block;
+}*/
+#1,#2,#4{
+  margin-left:40px;
+
+}
+
+
+@media (max-width: 880px) {
+
+.outerdiv{
+  width:250px;
+  margin-left: 170px;
+}
+
 }

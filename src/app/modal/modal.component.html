@@ -1,0 +1,16 @@
+<div class="row">
+ <button (click)="firstModal.open()">modal </button>
+<modal #firstModal>
+     <modal-header>
+         <h1>I am first modal</h1>
+             <app-image></app-image>
+   </modal-header>
+   <modal-content>
+       This modal has its own header, content and footer.
+  </modal-content>
+     <modal-footer>
+       <button class="btn btn-primary" (click)="firstModal.close()">okay!</button>
+    </modal-footer>
+</modal>
+
+</div>

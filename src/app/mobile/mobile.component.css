@@ -46,3 +46,14 @@ button{
   font-size: 18px;
   padding-bottom: 2px;
 }
+.toast-top-right {
+margin-buttom: 900px;
+}
+.msg{
+  font-size: 30px;
+  color: green
+}
+#toast-container{
+margin-bottom: -550px;
+
+}

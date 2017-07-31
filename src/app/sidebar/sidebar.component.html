@@ -4,8 +4,13 @@
   <div style="font-size:20px; margin-top:38px;" *ngFor="let op of options">
   {{op.head}}
   <div class="brand" *ngFor="let name of op.content">
-    <input type="checkbox" (change)="selected(op.head,name)" id={{name}} value="name"/> {{name}}
+    <input type="checkbox" (change)="selected(op.head,name)" id="{{op.head}}{{name}}" class="box"value="name"/> {{name}}
   </div>
+
+
+</div>
+<div style="font-size:15px; margin-top:20px;" class="">
+  <button class="btn btn-block " (click)="clearAll('box')" >clearAll</button>
 </div>
 </div>
 </div>

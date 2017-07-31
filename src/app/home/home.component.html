@@ -3,28 +3,33 @@
   <app-navigationbar></app-navigationbar>
 <!-- </div> -->
 
-<div style="margin-top:100px;"class="row">
+<div style="margin-top:75px;"class="row">
 
 
   <div class=" col-xs-2 col-sm-2 col-md-2 col-lg-2">
      <app-sidebar  (clicked)="onClicked($event)"></app-sidebar>
    </div>
 
-<div style="margin-left:30px;margin-right:30px;"class=" col-sm-9 col-md-9 col-lg-9" >
+<div style="margin-left:70px;"class=" col-sm-9 col-md-9 col-lg-9" >
 
-    <div id="div"style="margin-top:10px; margin-bottom:15px;"  class=" col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let data of data | filter : dont ">
+    <div id="div" class=" col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let data of data | filter : dont ">
       <div class="outerdiv">
         <div style="float:right;">
         <!-- <a  class="btn btn-link" style="padding:4px;color:black;text-decoration:none;">Buy</a> -->
       </div>
-    <img style="height:300px; margin:auto;" class="img" src="{{data.image.small}}" alt=""/>
+    <img style="height:300px; margin:auto;" id={{data.id}} class="img" src="{{data.image.small}}" alt=""/>
     <div  [routerLink]="['/mobile']" (click)="buy(data)" class="details">
-      <span class="d">{{data.name}}</span>
+      <span >{{data.name}}</span>
     </div>
       </div>
 
 
+
   </div>
+  <div   style="text-align:center;font-size:20px;" class="" *ngIf="dont?.length == 0">
+    <span style="text-align:center;font-size:20px;">Not Available</span>
+  </div>
+
 </div>
 <div class=" col-xs-1 col-sm-1 col-md-2 col-lg-1">
 

@@ -1,4 +1,4 @@
-import { Component, OnInit,EventEmitter,Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AppService } from '../app.service';
 
 @Component({
@@ -9,84 +9,55 @@ import { AppService } from '../app.service';
 
 })
 export class SidebarComponent implements OnInit {
-options:Array<any>;
-IsChecked;
-// count=0;
-// startHead=null;
-// secondHead=null;
-// thirdHead=null;
-// fourthHead=null;
-// vcount=0;
-//
+  options: Array<any>;
+  IsChecked;
 
 
 
-  constructor(private appservice:AppService) {
-    this.options=appservice.getOptions();
-    console.log( this.options);
+  constructor(private appservice: AppService) {
+    this.options = appservice.getOptions();
+    console.log(this.options);
   }
-  @Output() clicked=new EventEmitter<any>();
+  @Output() clicked = new EventEmitter<any>();
+  ngOnInit() { }
 
-  ngOnInit() {}
+  clearAll() {
 
-  selected(data1,data2)
-  {
-    //
-    // this.count++;
-    // if(this.count==1){
-    //  this.startHead=data1;
-    //  this.vcount=1;
-    // }
+    for( var head in this.options){
+      // console.log(this.options[head].content)
+      for(var name in this.options[head].content){
+        var data=this.options[head].head+this.options[head].content[name];
+        // console.log(data);
+        if ((<HTMLInputElement>document.getElementById(data)).checked === true) {
+          (<HTMLInputElement>document.getElementById(data)).checked = false;
 
-    // if(data1!=this.startHead && data1!=this.secondHead && this.secondHead!==null && this.startHead!==null){
-    // if(this.vcount==2 && data1!==this.secondHead){
-    //   console.log("thirdHead")
-    //   this.thirdHead=data1;
-    //   this.vcount=3;
-    // }
-    // if(this.vcount==3 && data1!==this.thirdHead){
-    //   console.log("fourthHead")
-    //   this.fourthHead=data1;
-    // }
-    // // if(data1!=this.startHead && this.startHead!==null){
-    // if(this.vcount==1 && data1!==this.startHead){
-    //   console.log("secondHead")
-    //   this.secondHead=data1;
-    //   this.vcount=2;
-    // }
-
-    if ((<HTMLInputElement>document.getElementById(data2)).checked === true) {
-          console.log("checked");
-          this.IsChecked=true;
         }
-    if ((<HTMLInputElement>document.getElementById(data2)).checked === false) {
-              console.log("unchecked");
-              this.IsChecked=false;
-        }
+      }
+    }
 
-      let specifications = {
-        head :data1,
-        content:data2,
-        checked:this.IsChecked,
-        // startHead:this.startHead,
-        // secondHead:this.secondHead,
-        // thirdHead:this.thirdHead,
-        // fourthHead:this.fourthHead
-        // camera:this.camera,
-        //  OS:this.OS
-        //
-       };
+    let specifications = {
+  clear: true
 
+    };
     this.clicked.emit(specifications);
   }
+  selected(head, name) {
 
+    if ((<HTMLInputElement>document.getElementById(head+name)).checked === true) {
 
+      this.IsChecked = true;
+    }
+    if ((<HTMLInputElement>document.getElementById(head+name)).checked === false) {
+      //console.log("unchecked");
+      this.IsChecked = false;
+    }
+
+    let specifications = {
+      head: head,
+      content: name,
+      checked: this.IsChecked,
+      clear: false
+    };
+    this.clicked.emit(specifications);
+  }
 }
-
-
-
-
-
-
-// }
-// }

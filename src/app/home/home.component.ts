@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
   posts: any = [];
   data: any;
   filterValue: any;
-  public content = {
+
+   content = {
     manufacturer: [],
     storage: [],
     camera: [],
@@ -23,62 +24,78 @@ export class HomeComponent implements OnInit {
   };
   newdata: any = [];
   dont: any;
-  secondHeadArray=new Array;
-  thirdHeadArray=new Array;
 
   constructor(private postsService: AppService, private router: Router) { }
+
   ngOnInit() {
+    if (!localStorage.getItem('mobile')) {
+      this.router.navigate(['/signin']);
+    }
     this.data = JSON.parse(localStorage.getItem('mobile'));
     console.log(this.data);
-    // this.newdata = this.data;
   }
-
-
 
   onClicked(value: any) {
-    this.filterValue = value;
 
+    if(value.clear){
 
-    if (value.checked) {
-      this.content[value.head].push(value.content);
-    }
-    else {
-      let remove = this.content[value.head].indexOf(value.content);
-      this.content[value.head].splice(remove, 1);
-    }
-
-console.log(this.content);
-
-    // if (value.head == value.startHead) {
-        let newArray = new Array();
-        this.newdata = this.data;
-      // }
-var self = this;
-this.dont = this.newdata.filter(function(mobileObj){
-  let manufacturerFlag=true,storageFlag=true,cameraFlag=true,osFlag=true;
-  if(self.content.manufacturer.length>0)
-    manufacturerFlag = (self.content.manufacturer.indexOf(mobileObj.specs.manufacturer)>-1)
-  if(self.content.storage.length>0)
-    storageFlag = (self.content.storage.indexOf(mobileObj.specs.storage)>-1)
-  if(self.content.camera.length>0)
-    cameraFlag = (self.content.camera.indexOf(mobileObj.specs.camera)>-1)
-  if(self.content.os.length>0)
-    osFlag = (self.content.os.indexOf(mobileObj.specs.os)>-1)
-return (manufacturerFlag&&storageFlag&&cameraFlag&&osFlag);
-});
-
-      console.log(this.dont);
-      this.newdata = this.dont;
-      console.log(this.newdata);
-
+      this.content = {
+        manufacturer: [],
+        storage: [],
+        camera: [],
+        os: []
+      };
 
     }
-    buy(value: any) {
-      console.log(value);
-      let buy = JSON.stringify(value);
-      localStorage.setItem('buy', buy);
-    }
+    else{
+       if (value.checked) {
+
+          this.content[value.head].push(value.content);
+
+        }
+        else {
+          let remove = this.content[value.head].indexOf(value.content);
+          this.content[value.head].splice(remove, 1);
+        }
+      }
+
+
+    this.newdata = this.data;
+    var self = this;
+    this.dont = this.newdata.filter(function(mobileObj) {
+      let manufacturerFlag = (self.content.manufacturer.length > 0) ? (self.content.manufacturer.indexOf(mobileObj.specs.manufacturer) > -1) : true;
+      let storageFlag = (self.content.storage.length > 0) ?
+      (self.content.storage.indexOf(mobileObj.specs.storage) > -1) : true;
+      let cameraFlag = (self.content.camera.length > 0) ?
+      (self.content.camera.indexOf(mobileObj.specs.camera) > -1) : true;
+      let osFlag = (self.content.os.length > 0) ?
+      (self.content.os.indexOf(mobileObj.specs.os) > -1) : true;
+
+
+      return (manufacturerFlag && storageFlag && cameraFlag && osFlag);
+    });
+    this.newdata = this.dont;
   }
+  buy(value: any) {
+
+    let buy = JSON.stringify(value);
+    localStorage.setItem('buy', buy);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // }
 /*
     // this.filtermanu();
